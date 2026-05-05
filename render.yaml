@@ -1,5 +1,5 @@
 services:
-  # Backend Web Service
+  # Backend (Docker - Puppeteer)
   - type: web
     name: pulsetester-backend
     env: docker
@@ -11,7 +11,7 @@ services:
       - key: NODE_ENV
         value: production
 
-  # Frontend Static Site
+  # Frontend (Vite React)
   - type: web
     name: pulsetester-frontend
     env: static
