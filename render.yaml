@@ -1,0 +1,23 @@
+services:
+  # Backend Web Service
+  - type: web
+    name: pulsetester-backend
+    env: docker
+    dockerContext: backend
+    dockerfilePath: Dockerfile
+    plan: free # Note: free tier might be slow for Puppeteer
+    envVars:
+      - key: PORT
+        value: 5000
+      - key: NODE_ENV
+        value: production
+
+  # Frontend Static Site
+  - type: static
+    name: pulsetester-frontend
+    env: static
+    buildCommand: "cd frontend && npm install && npm run build"
+    publishPath: "frontend/dist"
+    envVars:
+      - key: VITE_API_URL
+        value: https://pulsetester-backend.onrender.com
