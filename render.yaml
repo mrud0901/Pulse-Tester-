@@ -5,18 +5,16 @@ services:
     env: docker
     dockerContext: backend
     dockerfilePath: Dockerfile
-    plan: free
     envVars:
       - key: PORT
         value: 5000
       - key: NODE_ENV
         value: production
 
-  # Frontend Static Site (FIXED)
+  # Frontend Static Site
   - type: web
     name: pulsetester-frontend
     env: static
-    plan: free
+    rootDir: frontend
     buildCommand: npm install && npm run build
     staticPublishPath: dist
-    rootDir: frontend
